@@ -39,7 +39,7 @@ export const mobileNavigation: NavigationItem[] = [
   primaryNavigation[1],
   { label: "Create", href: "/compose", icon: Sparkles },
   primaryNavigation[2],
-  { label: "Profile", href: "/profile", icon: UserRound },
+  { label: "Sign in", href: "/sign-in", icon: UserRound },
 ];
 
 export function isRouteActive(pathname: string, href: string) {

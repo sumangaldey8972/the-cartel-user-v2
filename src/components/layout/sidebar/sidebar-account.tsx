@@ -1,4 +1,4 @@
-import { MoreHorizontal } from "lucide-react";
+import { LogIn, UserPlus } from "lucide-react";
 import Link from "next/link";
 
 type SidebarAccountProps = { onNavigate?: () => void };
@@ -6,11 +6,10 @@ type SidebarAccountProps = { onNavigate?: () => void };
 export function SidebarAccount({ onNavigate }: SidebarAccountProps) {
   return (
     <div className="left-rail__footer">
-      <Link className="account-preview" href="/profile" onNavigate={onNavigate}>
-        <span className="account-preview__avatar">SD</span>
-        <span><strong>Suman Dey</strong><small>@sumandey</small></span>
-        <MoreHorizontal size={17} />
-      </Link>
+      <div className="sidebar-auth-actions">
+        <Link href="/sign-in" onNavigate={onNavigate}><LogIn size={16} /> Sign in</Link>
+        <Link href="/sign-up" onNavigate={onNavigate}><UserPlus size={16} /> Create account</Link>
+      </div>
       <div className="sidebar-legal">
         <Link href="/about" onNavigate={onNavigate}>About</Link>
         <Link href="/terms" onNavigate={onNavigate}>Terms</Link>
