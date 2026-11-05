@@ -11,6 +11,16 @@ export const API_ENDPOINTS = {
     RESEND_VERIFICATION_OTP: "/api/auth/resend-verification-otp",
     CURRENT_USER: "/api/auth/me",
   },
+  FEED: {
+    POSTS: "/api/feed/posts",
+    POST: (postId: string) => `/api/feed/posts/${postId}`,
+    MEDIA_SIGNATURE: "/api/feed/media/signature",
+    LIKES: (postId: string) => `/api/feed/posts/${postId}/likes`,
+    COMMENTS: (postId: string) => `/api/feed/posts/${postId}/comments`,
+    COMMENT: (commentId: string) => `/api/feed/comments/${commentId}`,
+    SHARES: (postId: string) => `/api/feed/posts/${postId}/shares`,
+    TAGS: "/api/feed/tags",
+  },
 } as const;
 
 export const BACKEND_ENDPOINTS = {
@@ -26,13 +36,17 @@ export const BACKEND_ENDPOINTS = {
     RESEND_VERIFICATION_OTP: "/api/v1/auth/resend-verification-otp",
     CURRENT_USER: "/api/v1/auth/me",
   },
+  FEED: {
+    POSTS: "/api/v1/feed/posts",
+    POST: (postId: string) => `/api/v1/feed/posts/${postId}`,
+    MEDIA_SIGNATURE: "/api/v1/feed/media/signature",
+    LIKES: (postId: string) => `/api/v1/feed/posts/${postId}/likes`,
+    COMMENTS: (postId: string) => `/api/v1/feed/posts/${postId}/comments`,
+    COMMENT: (commentId: string) => `/api/v1/feed/comments/${commentId}`,
+    SHARES: (postId: string) => `/api/v1/feed/posts/${postId}/shares`,
+    TAGS: "/api/v1/feed/tags",
+  },
 } as const;
 
-type ValueOf<T> = T extends unknown ? T[keyof T] : never;
-type EndpointGroup = (typeof API_ENDPOINTS)[keyof typeof API_ENDPOINTS];
-
-export type ApiEndpoint = ValueOf<EndpointGroup>;
-
-type BackendEndpointGroup = (typeof BACKEND_ENDPOINTS)[keyof typeof BACKEND_ENDPOINTS];
-
-export type BackendEndpoint = ValueOf<BackendEndpointGroup>;
+export type ApiEndpoint = string;
+export type BackendEndpoint = string;
