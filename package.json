@@ -10,9 +10,10 @@
   },
   "dependencies": {
     "lucide-react": "latest",
-    "next": "latest",
+    "next": "16.4.6",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "@supabase/supabase-js": "latest"
   },
   "devDependencies": {
     "@eslint/eslintrc": "latest",

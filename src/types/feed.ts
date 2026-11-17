@@ -51,9 +51,23 @@ export type FeedComment = {
   author: FeedAuthor;
   parentComment: string | null;
   content: string;
+  likeCount: number;
+  viewerHasLiked: boolean;
   createdAt: string;
   updatedAt: string;
 };
+
+export type FeedRealtimeEvent =
+  | { event: "post.created"; post: FeedPost }
+  | { event: "post.updated"; post: FeedPost }
+  | { event: "post.deleted"; postId: string }
+  | { event: "comment.created"; postId: string; comment: FeedComment; commentCount: number }
+  | { event: "comment.updated"; postId: string; comment: FeedComment }
+  | { event: "comment.deleted"; postId: string; commentId: string; commentCount: number }
+  | { event: "comment.liked"; postId: string; commentId: string; likeCount: number; userId: string }
+  | { event: "comment.unliked"; postId: string; commentId: string; likeCount: number; userId: string }
+  | { event: "post.liked"; postId: string; likeCount: number; userId: string }
+  | { event: "post.unliked"; postId: string; likeCount: number; userId: string };
 
 export type Paginated<T> = {
   docs: T[];
